@@ -1,0 +1,38 @@
+define i32 @main() {
+    declare i32 %l0 ; variable: return
+    declare i32 %l1 ; variable: c
+    declare i32 %t2
+    declare i1 %t3
+    declare i32 %t4
+    declare i1 %t5
+    declare i32 %t6
+    entry
+    %l1 = 10
+    %t2 = %l1
+    %t3 = icmp ne %t2, 0
+    bc %t3, label .L3, label .L4
+.L3:
+    %l0 = 1
+    br label .L2
+    br label .L5
+.L4:
+    %t4 = %l1
+    %t5 = icmp eq %t4, 0
+    bc %t5, label .L6, label .L7
+.L6:
+    %l0 = 2
+    br label .L2
+    br label .L8
+.L7:
+    %l0 = 3
+    br label .L2
+    br label .L8
+.L8:
+    br label .L5
+.L5:
+    %l0 = 0
+    br label .L2
+.L2:
+    %t6 = %l0
+    exit %t6
+}
